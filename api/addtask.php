@@ -15,9 +15,11 @@ $clsDB = new clsDB(
     $dbconfig['db_name']
 );
 
-$query = "SELECT MAX(projecttaskid) AS maxid FROM `vtiger_projecttaskcf`";
+
+
+$query = "SELECT id FROM `vtiger_crmentity_seq`";
 $rows = $clsDB->getRows( $query );
-$task_id = $rows[0]->maxid + 1;
+$task_id = $rows[0]->id + 1;
 
 $query = "INSERT into `vtiger_projecttask` SET 
 `projecttaskid` = '{$task_id}',
@@ -48,6 +50,9 @@ if ($result)
         `label` = '{$title}'
         " 
     );
+
+    $clsDB->query( "UPDATE `vtiger_crmentity_seq` SET `id` = '{$task_id}'" );
+    
     
 }
 

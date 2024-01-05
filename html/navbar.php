@@ -11,6 +11,12 @@
       <li class="nav-item">
         <a class="nav-link" href="view-tasks.php">View Tasks</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="add-document.php">Add Document</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="view-documents.php">View Documents</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a>
       </li>
