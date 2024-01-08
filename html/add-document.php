@@ -42,7 +42,7 @@
 
                         <input type="hidden" name="assigned_to" value="1" />
                         <input type="hidden" name="uploaded_by" id="uploaded_by"  />
-                        
+                        <input type="hidden" name="task_id" id="task_id" value="<?php echo $_GET['task_id'] ?>"  />
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

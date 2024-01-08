@@ -58,8 +58,10 @@
 <?php include('footer.php'); ?>
 
 <script>
+
 jQuery(document).ready(function($){
 
+    
     jQuery.ajax({
         type: 'POST',
         url: "https://tfkgdemo.com/vtiger-crm/api/viewtasks",
@@ -80,7 +82,10 @@ jQuery(document).ready(function($){
                             <td>`+objEvent.projecttaskhours+`</td>
                             <td>`+objEvent.startdate+`</td>
                             <td>`+objEvent.enddate+`</td>
-                            <td><a href="edit-task.php?id=`+objEvent.projecttaskid+`">Edit</td>
+                            <td>
+                                <a class="btn btn-outline-primary btn-sm" href="edit-task.php?id=`+objEvent.projecttaskid+`">Edit</a> 
+                                <a class="btn btn-outline-primary btn-sm" href="add-document.php?task_id=`+objEvent.projecttaskid+`">Upload Document</a>
+                            </td>
                         </tr>
                     `); 
                 })
@@ -88,8 +93,12 @@ jQuery(document).ready(function($){
             
         }
     });
+    
 
+    
 });    
+
+
 </script>
 </body>
 </html>

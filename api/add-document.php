@@ -143,6 +143,45 @@ $clsDB->query( "INSERT into `vtiger_seattachmentsrel` SET
         " 
 );
 
+$clsDB->query( "INSERT into `vtiger_modtracker_basic` SET 
+        `id` = '{$document_id}',
+        `crmid` = '{$document_id}',
+        `module` = 'Documents',
+        `whodid` = '{$uploaded_by}',
+        `changedon` = '".date("Y-m-d H:i:s")."',
+        `status` = '2'
+        " 
+);
+
+$clsDB->query( "INSERT into `vtiger_modtracker_basic` SET 
+        `id` = '{$document_attachment_id}',
+        `crmid` = '{$task_id}',
+        `module` = 'ProjectTask',
+        `whodid` = '{$uploaded_by}',
+        `changedon` = '".date("Y-m-d H:i:s")."',
+        `status` = '4'
+        " 
+);
+
+$clsDB->query( "UPDATE `vtiger_modtracker_basic_seq` SET 
+        `id` = '{$document_attachment_id}'
+        " 
+);
+
+$clsDB->query( "INSERT into `vtiger_modtracker_relations` SET 
+        `id` = '{$document_attachment_id}',
+        `targetid` = '{$document_id}',
+        `targetmodule` = 'Documents',
+        `changedon` = '".date("Y-m-d H:i:s")."'
+        " 
+);
+
+$clsDB->query( "INSERT into `vtiger_senotesrel` SET 
+        `crmid` = '{$task_id}',
+        `notesid` = '{$document_id}'
+        " 
+);
+
 
 ob_get_clean();
 
