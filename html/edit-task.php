@@ -123,7 +123,8 @@
                         <input type="hidden" name="created_by" value="1" />
                         <input type="hidden" name="task_id" value="<?php echo $_GET['id']; ?>" />
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button> 
+                        <a class="btn btn-outline-primary" href="add-document.php?task_id=<?php echo $_GET['id'] ?>">Upload Document</a>
                     </form>
                 </div>
             </div>
