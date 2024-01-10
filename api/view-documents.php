@@ -15,10 +15,26 @@ $clsDB = new clsDB(
     $dbconfig['db_name']
 );
 
-//$query = "SELECT * FROM `vtiger_projecttask`";
-$query = "SELECT a.*, b.description, b.smcreatorid FROM 
-`vtiger_notes` AS a, `vtiger_crmentity` AS b WHERE 
-b.smcreatorid = '{$user_id}' AND a.notesid = b.crmid AND b.setype = 'Documents'";
+if ($task_id)
+{
+    $inArray = [];
+    $query = "SELECT * FROM vtiger_senotesrel WHERE crmid = '{$task_id}'";
+    $rows = $clsDB->getRows( $query );    
+    foreach ($rows as $r) { $inArray[] = $r->notesid; }
+
+    $query = "SELECT a.*, b.description, b.smcreatorid FROM 
+    `vtiger_notes` AS a, `vtiger_crmentity` AS b WHERE 
+    a.notesid IN (".implode(',', $inArray).") AND
+    b.smcreatorid = '{$user_id}' AND a.notesid = b.crmid AND b.setype = 'Documents'";
+}
+else
+{
+    $query = "SELECT a.*, b.description, b.smcreatorid FROM 
+    `vtiger_notes` AS a, `vtiger_crmentity` AS b WHERE 
+    b.smcreatorid = '{$user_id}' AND a.notesid = b.crmid AND b.setype = 'Documents'";
+}
+
+
 $rows = $clsDB->getRows( $query );
 $documents = [];
 foreach ($rows as $doc)

@@ -21,7 +21,18 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h3>View Documents</h3>
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3>View Documents</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <div align="right">
+                                <a class="btn btn-primary" href="add-document.php?task_id=<?php echo $_GET['task_id'] ?>">Add Document</a>
+                            </div>    
+                        </div>
+                    </div>
+                    
                     <br>
                     
                     <div class="table-responsive">
@@ -60,7 +71,8 @@ jQuery(document).ready(function($){
         type: 'POST',
         url: "https://tfkgdemo.com/vtiger-crm/api/view-documents",
         data: {
-            user_id: getCookie('vtiger_user')
+            user_id: getCookie('vtiger_user'),
+            task_id: <?php echo (int)@$_GET['task_id'] ?>
         },
         success: function(response){
 

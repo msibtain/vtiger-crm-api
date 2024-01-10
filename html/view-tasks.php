@@ -84,7 +84,7 @@ jQuery(document).ready(function($){
                             <td>`+objEvent.enddate+`</td>
                             <td>
                                 <a class="btn btn-outline-primary btn-sm" href="edit-task.php?id=`+objEvent.projecttaskid+`">Edit</a> 
-                                <a class="btn btn-outline-primary btn-sm" href="add-document.php?task_id=`+objEvent.projecttaskid+`">Upload Document</a>
+                                <a class="btn btn-outline-primary btn-sm" href="view-documents.php?task_id=`+objEvent.projecttaskid+`">Documents</a>
                             </td>
                         </tr>
                     `); 
