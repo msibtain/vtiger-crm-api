@@ -23,28 +23,10 @@
                 <div class="card-body">
                     <h3>View Tasks</h3>
                     <br>
-                    
-                    <div class="table-responsive">
 
-                    <table class="table table-bordered" id="tblTasks">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Project Task Name</th>
-                                <th scope="col">Priority</th>
-                                <th scope="col">Progress</th>
-                                <th scope="col">Worked Hours</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">End Date</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
+                    <span id="view_tasks_wrapper"></div>
+
                     
-                    </div>
 
                 </div>
             </div>
@@ -72,23 +54,47 @@ jQuery(document).ready(function($){
 
             if (response.success === "true")
             {
+                var cardHTML = `<div class="row">`;
+                
+
                 jQuery.each(response.tasks, function(index, objEvent){
-                    $('#tblTasks > tbody:first').append(`
-                        <tr>
-                            <td>`+objEvent.projecttaskid+`</td>
-                            <td>`+objEvent.projecttaskname+`</td>
-                            <td>`+objEvent.projecttaskpriority+`</td>
-                            <td>`+objEvent.projecttaskprogress+`</td>
-                            <td>`+objEvent.projecttaskhours+`</td>
-                            <td>`+objEvent.startdate+`</td>
-                            <td>`+objEvent.enddate+`</td>
-                            <td>
-                                <a class="btn btn-outline-primary btn-sm" href="edit-task.php?id=`+objEvent.projecttaskid+`">Edit</a> 
-                                <a class="btn btn-outline-primary btn-sm" href="view-documents.php?task_id=`+objEvent.projecttaskid+`">Documents</a>
-                            </td>
-                        </tr>
-                    `); 
-                })
+
+                    var priority = objEvent.projecttaskpriority.charAt(0).toUpperCase() + objEvent.projecttaskpriority.slice(1);
+
+                    cardHTML += `<div class="col-md-6"><div class="card" style="margin-bottom: 15px;">
+  <div class="card-header">
+  <h5 class="card-title">`+objEvent.projecttaskname+`</h5>
+  </div>
+  <div class="card-body">
+                    
+    <h6 class="card-subtitle mb-2 text-muted"><b>Progress:</b></h6>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: `+objEvent.projecttaskprogress+`;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">`+objEvent.projecttaskprogress+`</div>
+    </div>
+    <br>
+  
+    <p class="card-text">
+    <b>Priority:</b> `+priority+`<br>
+    <b>Worked Hours:</b> `+objEvent.projecttaskhours+`<br>
+    <b>Start Date:</b> `+objEvent.startdate+`<br>
+    <b>End Date:</b> `+objEvent.enddate+`
+    </p>
+    <div align="center">
+        <a style="width: 50%; margin-bottom: 10px;" class="btn btn-outline-primary btn-lg" href="edit-task.php?id=`+objEvent.projecttaskid+`">View</a> 
+    </div>
+    
+    <div align="center">
+        <a style="width: 50%;" class="btn btn-outline-primary btn-lg" href="view-documents.php?task_id=`+objEvent.projecttaskid+`">Documents</a>
+    </div>
+    
+  </div>
+</div></div>`;
+
+                    
+                });
+
+                cardHTML += `</div>`
+                $('#view_tasks_wrapper').html( cardHTML );
             }
             
         }
