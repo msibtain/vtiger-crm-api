@@ -23,12 +23,12 @@
                 <div class="card-body">
 
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h3>View Documents</h3>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div align="right">
-                                <a class="btn btn-primary" href="add-document.php?task_id=<?php echo $_GET['task_id'] ?>">Add Document</a>
+                                <a href="edit-task.php?id=<?php echo $_GET['task_id'] ?>" style="float:right; font-size: 17px;">Back</a>
                             </div>    
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             
                         </tbody>
                     </table>
-                    
+                    <a class="btn btn-primary" href="add-document.php?task_id=<?php echo $_GET['task_id'] ?>" style="width: 100%;">Add Document</a>
                     </div>
 
                 </div>
@@ -69,7 +69,7 @@ jQuery(document).ready(function($){
 
     jQuery.ajax({
         type: 'POST',
-        url: "https://tfkgdemo.com/vtiger-crm/api/view-documents",
+        url: "https://crm.widdsigns.co.uk/api/view-documents.php",
         data: {
             user_id: getCookie('vtiger_user'),
             task_id: <?php echo (int)@$_GET['task_id'] ?>

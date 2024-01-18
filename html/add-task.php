@@ -150,7 +150,7 @@ jQuery(document).ready(function($){
 
         jQuery.ajax({
             type: 'POST',
-            url: "https://tfkgdemo.com/vtiger-crm/api/addtask",
+            url: "https://crm.widdsigns.co.uk/api/addtask.php",
             data: formDataObj,
             success: function(response){
                 console.log("in success");

@@ -2,7 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>View Tasks</title>
+<title>Completed Tasks</title>
 
 <?php include('header.php'); ?>
 
@@ -21,11 +21,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h3>View Tasks</h3>
+                    <h3>Completed Tasks</h3>
                     <br>
-
-                    Date filter: <input type="date" id="dt_date" value="<?php echo date("Y-m-d"); ?>" onchange="loadTasks();" />
-                    <br><br>
 
                     <span id="view_tasks_wrapper"></div>
 
@@ -51,7 +48,7 @@ function loadTasks() {
         //url: "https://tfkgdemo.com/vtiger-crm/api/viewtasks.php",
         data: {
             user_id: getCookie('vtiger_user'),
-            date: $('#dt_date').val()
+            progress: '100%'
         },
         success: function(response){
 

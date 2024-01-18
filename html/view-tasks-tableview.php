@@ -65,7 +65,7 @@ jQuery(document).ready(function($){
     
     jQuery.ajax({
         type: 'POST',
-        url: "https://tfkgdemo.com/vtiger-crm/api/viewtasks",
+        url: "https://crm.widdsigns.co.uk/api/viewtasks",
         data: {
             user_id: getCookie('vtiger_user')
         },

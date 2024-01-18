@@ -21,7 +21,10 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h3>Add Document</h3>
+                    <div class="row">
+                        <div class="col-10"><h3>Add Document</h3></div>
+                        <div class="col-2"><a href="edit-task.php?id=<?php echo $_GET['task_id'] ?>" style="float:right; font-size: 17px;">Back</a></div>
+                    </div>
                     <br>
 
                     <form id="frmAddDoc">
@@ -65,7 +68,7 @@ jQuery(document).ready(function($){
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "https://tfkgdemo.com/vtiger-crm/api/add-document",
+            url: "https://crm.widdsigns.co.uk/api/add-document.php",
             crossDomain: true,
             data: new FormData(this),
             dataType: "json",
@@ -78,7 +81,8 @@ jQuery(document).ready(function($){
             }).done(function(response) {
                 if (response.success === "true")
                 {
-                    toastr.success('Document has been added.', 'Success!')
+                    toastr.success('Document has been added.', 'Success!');
+                    window.location = "upload-success.php?id=<?php echo $_GET['task_id'] ?>";
                 }
                 else
                 {

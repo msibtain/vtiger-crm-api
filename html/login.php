@@ -19,6 +19,7 @@
 
             <div class="card">
                 <div class="card-body">
+                    <center><img src="logo.png"></center><br/>
                     <h3>Login</h3>
                     <br>
 
@@ -68,7 +69,7 @@ jQuery(document).ready(function(){
 
         jQuery.ajax({
             type: 'POST',
-            url: "https://tfkgdemo.com/vtiger-crm/api/login",
+            url: "https://crm.widdsigns.co.uk/api/login.php",
             data: formDataObj,
             success: function(response){
                 console.log("in success");

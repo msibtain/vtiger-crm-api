@@ -21,7 +21,10 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h3>Edit Task</h3>
+                    <div class="row">
+                        <div class="col-10"><h3>Edit Task</h3></div>
+                        <div class="col-2"><a href="view-tasks.php" style="float:right; font-size: 17px;">Back</a></div>
+                    </div>
                     <br>
 
                     <form id="frmAddTask">
@@ -123,8 +126,9 @@
                         <input type="hidden" name="created_by" value="1" />
                         <input type="hidden" name="task_id" value="<?php echo $_GET['id']; ?>" />
                         
-                        <button type="submit" class="btn btn-primary">Submit</button> 
+                        <button type="submit" class="btn btn-primary">Submit</button> <br/><br/>
                         <a class="btn btn-outline-primary" href="add-document.php?task_id=<?php echo $_GET['id'] ?>">Upload Document</a>
+                        <a class="btn btn-outline-success" href="view-documents.php?task_id=<?php echo $_GET['id'] ?>">View Documents</a>
                     </form>
                 </div>
             </div>
@@ -142,7 +146,7 @@ jQuery(document).ready(function(){
 
     jQuery.ajax({
         type: 'POST',
-        url: "https://tfkgdemo.com/vtiger-crm/api/gettask",
+        url: "https://crm.widdsigns.co.uk/api/gettask.php",
         data: {
             task_id: "<?php echo $_GET['id'] ?>"
         },
@@ -177,7 +181,7 @@ jQuery(document).ready(function(){
 
         jQuery.ajax({
             type: 'POST',
-            url: "https://tfkgdemo.com/vtiger-crm/api/updatetask",
+            url: "https://crm.widdsigns.co.uk/api/updatetask.php",
             data: formDataObj,
             success: function(response){
                 console.log("in success");
